@@ -1,7 +1,7 @@
 from Package import Package
 
 
-class StandarPackage(Package):
+class Standar_Package(Package):
 
     def __init__(self, id: int = 0, weight: float = 0, descripcion: str = "",) -> None:
         super().__init__(id, weight, descripcion)
