@@ -1,51 +1,67 @@
 class Package:
 
-    def __init__(self, id: int = 0, weight: float = 0.0, descripcion: str = "") -> None:
-        self.__id: int = id
-        self.__weight: float = weight
-        self.__descripcion: str = descripcion
-        self.__cost: float = 2
+    def __init__(self, id: int = 0, weight: float = 0, descripcion: str = ""):
+        if type(id) != int:
+            print("Por favor ingrese un id valido.")
+            return
 
-    # getters
+        if type(weight) not in (int, float):
+            print("Por favor ingrese un peso valido.")
+            return
+
+        if type(descripcion) != str:
+            print("Por favor ingrese una descripcion valida.")
+            return
+
+        self._id: int = id
+        self._weight: float = weight
+        self._descripcion: str = descripcion
+        self._cost: int = 2.5
+        self.envio: int = 0
+
     @property
-    def __id(self) -> int:
-        return self.__id
+    def id(self) -> int:
+        return self._id
+
+    @id.setter
+    def id(self, id_nuevo: int) -> None:
+        if id_nuevo > 0 and isinstance(id_nuevo, int):
+            self._id = id_nuevo
+        else:
+            print("Por favor ingrese un iddd valido.")
 
     @property
-    def __weight(self) -> float:
-        return self.__weight
+    def weight(self) -> float:
+        return self._weight
+
+    @weight.setter
+    def weight(self, weight_nuevo: float) -> None:
+        if weight_nuevo > 0 and isinstance(weight_nuevo, float):
+            self._weight = weight_nuevo
+        else:
+            print("Por favor ingrese un peso valido.")
 
     @property
-    def __descripcion(self) -> str:
-        return self.__descripcion
+    def descripcion(self) -> str:
+        return self._descripcion
+
+    @descripcion.setter
+    def descripcion(self, descripcion_nuevo: str) -> None:
+        if isinstance(descripcion_nuevo, str):
+            self._descripcion = descripcion_nuevo
+        else:
+            print("Por favor ingrese una descripcion valida.")
 
     @property
-    def __cost(self) -> float:
-        return self.__cost
-
-    # setters
-
-    @__id.setter
-    def __id(self, id: int) -> None:
-        self.__id = id
-
-    @__weight.setter
-    def __weight(self, weight: float) -> None:
-        if weight > 0.0:
-            self.__weight = weight
-
-    @__descripcion.setter
-    def __descripcion(self, descripcion: str) -> None:
-        self.__descripcion = descripcion
-
-    @__cost.setter
-    def __cost(self, cost: float) -> None:
-        if cost > 0.0:
-            self.__cost = cost
+    def cost(self) -> float:
+        return self._cost
 
     def __str__(self) -> str:
-        return 'Package # : '+self.__id + ' | Peso(Kg): '+self.__weight+' | Descripcion: '+self.__descripcion+' | Costo: ' + self.__cost + ''
+        return f"""\nId: {self._id}\nWeight: {self._weight}"""
 
     def calculate(self) -> int:
-        raise NotImplementedError(
-            "Subclass must implement this abstract method")
+        self.envio = self._weight*self._cost*1000
+        return self.envio
+
+
+x = Package(2, 5)

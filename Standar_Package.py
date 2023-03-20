@@ -8,4 +8,8 @@ class Standar_Package(Package):
         self.__fixedFee = 10000
 
     def calculate(self) -> int:
-        return self.__fixedFee + (self.__weight*self.__cost)
+        return super().calculate()+self.__fixedFee
+
+
+j = Standar_Package(2, 5)
+print(j.calculate())
