@@ -11,5 +11,5 @@ class Standar_Package(Package):
         return super().calculate()+self.__fixedFee
 
 
-j = Standar_Package(2, 5)
-print(j.calculate())
+#j = Standar_Package(2, 60)
+#print(j.calculate())

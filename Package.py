@@ -16,7 +16,7 @@ class Package:
         self._id: int = id
         self._weight: float = weight
         self._descripcion: str = descripcion
-        self._cost: int = 2.5
+        self._cost: float = 2.5
         self.envio: int = 0
 
     @property
@@ -64,4 +64,5 @@ class Package:
         return self.envio
 
 
-x = Package(2, 5)
+#x = Package(2, 5)
+#print(x.calculate())
