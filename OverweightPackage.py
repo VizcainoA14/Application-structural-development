@@ -1,6 +1,7 @@
 from Package import Package
 from abc import ABC, abstractmethod
 
+# Subclass Standar_Package inherited of Package
 
 class OverweightPackage(Package):
     @abstractmethod
@@ -12,7 +13,7 @@ class OverweightPackage(Package):
         self._cost = self.calculate()
         
     
-
+    #redefinition of the calculate method
     @abstractmethod
     def calculate(self) -> float:
         calculation = (self._weight * self.W_GR_100 * 1000) + self._Over_weight * self._cost_Ow

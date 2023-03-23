@@ -1,11 +1,9 @@
 from abc import ABC, abstractmethod
-
-
 class Package:
     @abstractmethod
-    def __init__(self, id: int = 0, weight: float = 0.0, descripcion: str = ""):
+    def __init__(self, id: int = 0, weight: float = 0.0, descripcion: str = ""): #constructor method
         if type(id) != int:
-            print("Por favor ingrese un id valido.")
+            print("Por favor ingrese un id valido.")   #validation of parameters
             return
 
         if weight < 0 and type(weight) != float:
@@ -15,13 +13,16 @@ class Package:
         if type(descripcion) != str:
             print("Por favor ingrese una descripcion valida.")
             return
-
+    
+        #attributes
         self._id: int = id
         self._weight: float = weight
         self._descripcion: str = descripcion
         self.W_GR_100: float = 2
         self._cost: float = self.calculate()
 
+
+    #getters y setter using decorators
     @property
     def id(self) -> int:
         return self._id
@@ -58,11 +59,14 @@ class Package:
     @property
     def cost(self) -> float:
         return self._cost
-
+    
+    #str method
     @abstractmethod
     def __str__(self) -> str:
         return f"""\nId: {self._id}\nWeight: {self._weight}\nDescripcion: {self._descripcion}\ncost_envio: {self._cost}"""
-
+    
+    
+    #abstract methos calculate that is redefined in the subclasess
     @abstractmethod
     def calculate(self) -> float:
         pass
