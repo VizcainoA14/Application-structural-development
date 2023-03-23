@@ -5,7 +5,9 @@ from Package import Package
 
 class Deliver():
 
-    def __init__(self, code_id: int, date: int, time: int, sender: Person, recive: Person, sender_add_address: address, reciver_add_address: address, contact: Person, items: Package) -> None:
+    def __init__(self, code_id: int, date: int, time: int, sender: Person,
+                 recive: Person, sender_add_address: address, reciver_add_address: address,
+                 contact: Person, items: Package) -> None:
         # Constraints
         if type(code_id) != int:
             print("\n¡El valor ingresado es inválido!, por favor ingrese un nuevo valor")
@@ -163,5 +165,5 @@ class Deliver():
 
 
 objeto = Deliver(1, 2, 3, Person(1, "samuel", "tobio"), Person(2, "mariana", "ortiz"), address("Calle 2", "La princesa",
-                 "Department 6"), address("Calle3", "La Princesa", "Department 7"), Person(3, "Juan", "Perez"), Sta(4, 68.3, "Big Package"))
+                 "Department 6"), address("Calle3", "La Princesa", "Department 7"), Person(3, "Juan", "Perez"), Package(4, 68.3, "Big Package"))
 print(objeto.__str__())
