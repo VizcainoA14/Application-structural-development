@@ -1,11 +1,14 @@
-class Package:
+from abc import ABC, abstractmethod
 
-    def __init__(self, id: int = 0, weight: float = 0, descripcion: str = ""):
+
+class Package:
+    @abstractmethod
+    def __init__(self, id: int = 0, weight: float = 0.0, descripcion: str = ""):
         if type(id) != int:
             print("Por favor ingrese un id valido.")
             return
 
-        if type(weight) not in (int, float):
+        if weight < 0 and type(weight) != float:
             print("Por favor ingrese un peso valido.")
             return
 
@@ -16,8 +19,8 @@ class Package:
         self._id: int = id
         self._weight: float = weight
         self._descripcion: str = descripcion
-        self._cost: float = 2.5
-        self.envio: int = 0
+        self.W_GR_100: float = 2
+        self._cost: float = self.calculate()
 
     @property
     def id(self) -> int:
@@ -28,7 +31,7 @@ class Package:
         if id_nuevo > 0 and isinstance(id_nuevo, int):
             self._id = id_nuevo
         else:
-            print("Por favor ingrese un iddd valido.")
+            print("Por favor ingrese un id valido.")
 
     @property
     def weight(self) -> float:
@@ -56,13 +59,12 @@ class Package:
     def cost(self) -> float:
         return self._cost
 
+    @abstractmethod
     def __str__(self) -> str:
-        return f"""\nId: {self._id}\nWeight: {self._weight}"""
+        return f"""\nId: {self._id}\nWeight: {self._weight}\nDescripcion: {self._descripcion}\ncost_envio: {self._cost}"""
 
-    def calculate(self) -> int:
-        self.envio = self._weight*self._cost*1000
-        return self.envio
+    @abstractmethod
+    def calculate(self) -> float:
+        pass
 
 
-#x = Package(2, 5)
-#print(x.calculate())

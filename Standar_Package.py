@@ -1,15 +1,25 @@
 from Package import Package
+from abc import ABC, abstractmethod
 
 
 class Standar_Package(Package):
-
-    def __init__(self, id: int = 0, weight: float = 0, descripcion: str = "",) -> None:
+    @abstractmethod
+    def __init__(self, id: int = 0, weight: float = 0, descripcion: str = "") -> None:
+        self._fixedFee = 10000
         super().__init__(id, weight, descripcion)
-        self.__fixedFee = 10000
+        self._cost = self.calculate()
+        
+    @abstractmethod
+    def calculate(self) -> float:
+        if self._weight <= 0.0:
+            return 0
+        calculation = (self._weight * self.W_GR_100 * 1000) + self._fixedFee
+        return calculation
+       
+    
 
-    def calculate(self) -> int:
-        return super().calculate()+self.__fixedFee
+    def __str__(self) -> str:
+        return super().__str__()
 
 
-#j = Standar_Package(2, 60)
-#print(j.calculate())
+
