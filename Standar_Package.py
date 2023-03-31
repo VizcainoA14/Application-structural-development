@@ -6,12 +6,13 @@ from abc import ABC, abstractmethod
 
 class Standar_Package(Package):
     @abstractmethod
-    def __init__(self, id: int = 0, weight: float = 0, descripcion: str = "") -> None: #constructor method
+    def __init__(self, id: int = 0, weight: float = 0,
+                 descripcion: str = "") -> None:  # constructor method
         self._fixedFee = 10000
         super().__init__(id, weight, descripcion)
         self._cost = self.calculate()
 
-    #redefinition of the calculate method
+    # redefinition of the calculate method
     @abstractmethod
     def calculate(self) -> float:
         if self._weight <= 0.0:

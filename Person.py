@@ -1,6 +1,8 @@
 class Person:
 
-    def __init__(self, dni: int = 0, name: str = "", lastname: str = "") -> None:
+    def __init__(self, dni: int = 0, name: str = "",
+                 lastname: str = "") -> None:
+
         if type(dni) != int:
             print("Por favor ingrese un DNI valido.")
             return
@@ -11,7 +13,7 @@ class Person:
 
         if type(lastname) != str:
             print("Por favor ingrese una apellido valido.")
-             
+
         self._dni = dni
         self._name = name
         self._lastname = lastname
@@ -52,6 +54,7 @@ class Person:
     def __str__(self) -> str:
         return f"""\nDNI: {self._dni}\nNombre: {self._name} {self._lastname}"""
 
-x = Person(334,"Adrian", "Vizcaino")
+
+x = Person(334, "Adrian", "Vizcaino")
 
 print(x.__str__())
