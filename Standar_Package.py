@@ -12,6 +12,8 @@ class Standar_Package(Package):
         super().__init__(id, weight, descripcion)
         self._cost = self.calculate()
 
+        
+
     # redefinition of the calculate method
     @abstractmethod
     def calculate(self) -> float:
