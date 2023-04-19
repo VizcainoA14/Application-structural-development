@@ -5,7 +5,8 @@ class Package:
     @abstractmethod
     def __init__(self, id: int = 0, weight: float = 0.0, descripcion: str = ""):  # constructor method
         if type(id) != int:
-            print("Por favor ingrese un id valido.")  # validation of parameters
+            # validation of parameters
+            print("Por favor ingrese un id valido.")
             return
 
         if weight < 0 and type(weight) != float:
@@ -70,3 +71,11 @@ class Package:
     @abstractmethod
     def calculate(self) -> float:
         pass
+
+
+x = Package(32, 3, "dsdwd")
+print(x)
+
+x.descripcion = "packete de prueba"
+
+print(x)
